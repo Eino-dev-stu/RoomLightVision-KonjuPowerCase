@@ -99,14 +99,15 @@ def guest_loop(floor, user, info): 	## REQ-id1: Guest can only control their ass
 
 
 # --- RUN ---
-floor = Floor()
+if __name__ == "__main__":
+    floor = Floor()
 
-user, info = None, None  ## user authentication loop, keeps asking for login until successful
-while not user:
-    user, info = login()
+    user, info = None, None  ## user authentication loop, keeps asking for login until successful
+    while not user:
+        user, info = login()
 
-## choose interface based on user role
-if info["role"] == "admin":  
-    admin_loop(floor, user, info) # REQ-id4: Admin can control all rooms, guest can only control their room.
-else:
-    guest_loop(floor, user, info) # REQ-id1: Guest can only control their assigned room, not the entire floor or the other rooms.
+    ## choose interface based on user role
+    if info["role"] == "admin":  
+        admin_loop(floor, user, info) # REQ-id4: Admin can control all rooms, guest can only control their room.
+    else:
+        guest_loop(floor, user, info) # REQ-id1: Guest can only control their assigned room, not the entire floor or the other rooms.
