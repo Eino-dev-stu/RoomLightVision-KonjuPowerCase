@@ -103,5 +103,18 @@ def test_invalid_login(monkeypatch,capsys):
     assert (result := "Invalid login, unauthorized access denied." in capsys.readouterr().out)
 
 
-
+#test logging of light changes REQ-id10
+def test_light_change_logging():
+    "Verify that light changes are logged correctly (REQ-id10)."
+    room = Room("test_room")
     
+    room.toggle("bedroom")  # Turn ON
+    room.toggle("bedroom")  # Turn OFF
+    
+    log = room.get_report()  # Get the usage log
+
+    assert len(log) == 2
+    assert log[0]["light"] == "bedroom"
+    assert log[0]["action"] == "ON"
+    assert log[1]["light"] == "bedroom"
+    assert log[1]["action"] == "OFF"

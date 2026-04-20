@@ -1,3 +1,4 @@
+from datetime import datetime
 class Room:
     def __init__(self, name):
         self.name = name
@@ -6,10 +7,13 @@ class Room:
             "bathroom": False,
             "livingroom": False
         }
+        
+        self.usage_log = [] #add logging for light changes requested in REQ-id10
 
     def toggle(self, light): #REQ-id4: Toggle a specific light in the room off or on
         if light in self.lights:
             self.lights[light] = not self.lights[light] 
+            self._log_event(light, self.lights[light])  ##REQ-id10 collect data
 
     def set_all(self, state: bool): # REQ-id4: Toggle all lights in the room on or off
         for key in self.lights:
@@ -21,6 +25,16 @@ class Room:
         for name, state in self.lights.items(): # REQ-id5: Show the status of all lights in the room
             print(f"    {name}: {'ON' if state else 'OFF'}")
 
+    def _log_event(self, light_name, state): ## REQ-id10: Internal logging of light changes for analytics
+        """Internal helper to record usage."""
+        self.usage_log.append({
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "light": light_name,
+            "action": "ON" if state else "OFF"
+        })
+    def get_report(self):  ##REQ-id 10 method to retrieve the usage log for light use
+        
+        return self.usage_log
 
 class Floor:
     def __init__(self):
