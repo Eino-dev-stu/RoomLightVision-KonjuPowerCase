@@ -3,6 +3,8 @@
 1. Enviroment: Python 3.11.31, windows
 2. Method: pytest automated tests
 
+Results: [Report](https://github.com/Eino-dev-stu/RoomLightVision-KonjuPowerCase/blob/main/Images/Screenshot%202026-04-20%20175021.png)
+
 ## Requirement Mapping (REQ-ids) pytest
 
 | ID       | Requirement         | Test Method                                              |
