@@ -3,6 +3,11 @@
 1. Enviroment: Python 3.11.31, windows
 2. Method: pytest automated tests
 
+3. SCOPE:
+   Room Logic: Verify that toggle() and set_all() correctly update the dictionary states.
+   Floor Logic: Verify that switch_room() updates the current_room pointer correctly.
+   Logging: Verify that every state change creates a new entry in usage_log.
+
 Results: [Report](https://github.com/Eino-dev-stu/RoomLightVision-KonjuPowerCase/blob/main/Images/Screenshot%202026-04-20%20175021.png)
 
 ## Requirement Mapping (REQ-ids) pytest
