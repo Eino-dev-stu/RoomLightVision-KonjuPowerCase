@@ -1,4 +1,5 @@
 from datetime import datetime
+
 class Room:
     def __init__(self, name):
         self.name = name
@@ -20,10 +21,11 @@ class Room:
             self.lights[key] = state
 
     def show(self, is_active=False): 
-        marker = "Give command:" if is_active else "  "
-        print(f"\n{marker} {self.name}")
+        mark = ">> " if is_active else "   "
+        print(f"{mark}Room: {self.name}")
         for name, state in self.lights.items(): # REQ-id5: Show the status of all lights in the room
             print(f"    {name}: {'ON' if state else 'OFF'}")
+            
 
     def _log_event(self, light_name, state): ## REQ-id10: Internal logging of light changes for analytics
         """Internal helper to record usage."""
@@ -44,7 +46,7 @@ class Floor:
         }
         self.current_room = "room1"
 
-    def switch_room(self, room_name): #REQ-id4: allows switching between rooms on the floor
+    def switch_room(self, room_name): #REQ-id4: allows admin switching between rooms on the floor
         if room_name in self.rooms:
             self.current_room = room_name
         else:
@@ -64,9 +66,4 @@ class Floor:
         for name, room in self.rooms.items():
             room.show(is_active=(name == self.current_room))
 
-        print("\nCommands:")
-        print("  switch room1 / room2")
-        print("  bedroom / bathroom / livingroom")
-        print("  room_on / room_off")
-        print("  floor_on / floor_off")
-        print("  q")
+        

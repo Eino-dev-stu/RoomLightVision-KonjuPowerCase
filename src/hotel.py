@@ -37,7 +37,7 @@ def admin_loop(floor, user, info):
         print("  bedroom / bathroom / livingroom")
         print("  room_on / room_off")
         print("  floor_on / floor_off")
-        print("  q")
+        print("  exit with q")
 
         cmd = input(">> ").lower()
 
@@ -81,7 +81,7 @@ def guest_loop(floor, user, info): 	## REQ-id1: Guest can only control their ass
         print("\nCommands:")
         print("  bedroom / bathroom / livingroom")
         print("  room_on / room_off")
-        print("  q")
+        print("  exit with q")
 
         cmd = input(">> ").lower()
 
