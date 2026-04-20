@@ -118,3 +118,16 @@ def test_light_change_logging():
     assert log[0]["action"] == "ON"
     assert log[1]["light"] == "bedroom"
     assert log[1]["action"] == "OFF"
+
+#test secure logout functionality REQ-id3
+def test_logout(monkeypatch,capsys):
+    "Verify that logout functionality ends the session and returns to login (REQ-id3)."
+    # Mock input for admin login and then logout
+    inputs = iter(["admin", "admin", "q"])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    
+    admin_loop(Floor(), "admin", {"role": "admin"})
+    
+    captured = capsys.readouterr()
+    assert "Session for 'admin' ended." in captured.out
+    assert "Returning to login screen..." in captured.out

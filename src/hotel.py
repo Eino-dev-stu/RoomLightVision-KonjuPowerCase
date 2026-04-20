@@ -42,6 +42,8 @@ def admin_loop(floor, user, info):
         cmd = input(">> ").lower()
 
         if cmd == "q":
+            print(f"\n[LOGOUT] Session for '{user}' ended.") ## REQ-id3: secure Logout functionality for both admins and guests, ensuring secure access control and session management.
+            print("Access Terminated. Returning to login screen...")
             break
         elif cmd.startswith("switch"):
             _, room_name = cmd.split()
@@ -84,6 +86,8 @@ def guest_loop(floor, user, info): 	## REQ-id1: Guest can only control their ass
         cmd = input(">> ").lower()
 
         if cmd == "q":
+            print(f"\n[LOGOUT] Session for '{user}' ended.") ## REQ-id3: secure Logout functionality for both admins and guests, ensuring secure access control and session management.
+            print("Access Terminated. Returning to login screen...")
             break
 
         elif cmd == "room_on":
@@ -101,13 +105,16 @@ def guest_loop(floor, user, info): 	## REQ-id1: Guest can only control their ass
 # --- RUN ---
 if __name__ == "__main__":
     floor = Floor()
+    while True: # Keep the system running for the next user
+        
+        user, info = None, None   ## reset user info for new login attempt REQ-id3: secure Logout functionality for both admins and guests, ensuring secure access control and session management.
+        while not user: ## user authentication loop, keeps asking for login until successful
+            user, info = login()
 
-    user, info = None, None  ## user authentication loop, keeps asking for login until successful
-    while not user:
-        user, info = login()
-
-    ## choose interface based on user role
-    if info["role"] == "admin":  
-        admin_loop(floor, user, info) # REQ-id4: Admin can control all rooms, guest can only control their room.
-    else:
-        guest_loop(floor, user, info) # REQ-id1: Guest can only control their assigned room, not the entire floor or the other rooms.
+        ## choose interface based on user role
+        
+        if info["role"] == "admin":  
+            admin_loop(floor, user, info) # REQ-id4: Admin can control all rooms, guest can only control their room.
+        else:
+            guest_loop(floor, user, info) # REQ-id1: Guest can only control their assigned room, not the entire floor or the other rooms.
+        
