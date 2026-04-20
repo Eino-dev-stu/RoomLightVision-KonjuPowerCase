@@ -21,10 +21,17 @@ class Room:
             self.lights[key] = state
 
     def show(self, is_active=False): 
+        # ANSI Color codes
+        GREEN = "\033[92m"
+        RED = "\033[91m"
+        RESET = "\033[0m"
+
         mark = ">> " if is_active else "   "
         print(f"{mark}Room: {self.name}")
         for name, state in self.lights.items(): # REQ-id5: Show the status of all lights in the room
-            print(f"    {name}: {'ON' if state else 'OFF'}")
+           ## print(f"    {name}: {'ON' if state else 'OFF'}")
+            status_text = f"{GREEN}ON{RESET}" if state else f"{RED}OFF{RESET}"
+            print(f"    {name}: {status_text}")
             
 
     def _log_event(self, light_name, state): ## REQ-id10: Internal logging of light changes for analytics

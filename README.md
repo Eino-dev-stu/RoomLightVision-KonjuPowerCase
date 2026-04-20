@@ -23,27 +23,27 @@ Logged in as admin
 
 ### Admin interface Shows available commands:
 
-[ADMIN] admin
+> > [ADMIN] admin
 
-=== FLOOR ===
-Active room: room1
+    === FLOOR ===
+    Active room: room1
 
-> > Room: room1
+    Room: room1
 
     bedroom: OFF
     bathroom: OFF
     livingroom: OFF
 
-Room: room2
-bedroom: OFF
-bathroom: OFF
-livingroom: OFF
+    Room: room2
+    bedroom: OFF
+    bathroom: OFF
+    livingroom: OFF
 
-Commands:
-switch room1/room2
-bedroom / bathroom / livingroom
-room_on / room_off
-floor_on / floor_off
-exit with q
+    Commands:
+    switch room1/room2
+    bedroom / bathroom / livingroom
+    room_on / room_off
+    floor_on / floor_off
+    exit with q
 
 > >
