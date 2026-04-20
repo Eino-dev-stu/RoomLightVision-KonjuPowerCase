@@ -1,3 +1,8 @@
+## Test plan
+
+1. Enviroment: Python 3.11.31, windows
+2. Method: pytest automated tests
+
 ## Requirement Mapping (REQ-ids) pytest
 
 | ID       | Requirement         | Test Method                                              |
