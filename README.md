@@ -2,6 +2,8 @@
 
 ### One RoomLightVision to rule them all
 
+## [Video link](https://youtu.be/ODQBtgYPh-A)
+
 ### [Project press release](https://github.com/Eino-dev-stu/RoomLightVision-KonjuPowerCase/blob/main/Documents/PressRelease.pdf)
 
 2. Prototype file structure
